@@ -1,0 +1,12 @@
+# IntelliJ IDEA
+.idea/
+
+# Bytecode and class files
+*.class
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
