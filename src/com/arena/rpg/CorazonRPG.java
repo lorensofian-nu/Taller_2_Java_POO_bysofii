@@ -1,12 +1,5 @@
 package com.arena.rpg;
 
-/**
- * Clase que representa el núcleo vital (CorazonRPG) de un Personaje.
- * Participa en una relación de Composición Fuerte (1..1) con Personaje:
- * Su ciclo de vida depende exclusivamente del Personaje, no puede existir
- * de forma independiente y se instancia directamente dentro del constructor
- * de Personaje.
- */
 public class CorazonRPG {
     private int saludBase;
     private int manaBase;
@@ -61,7 +54,7 @@ public class CorazonRPG {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("[Salud: ").append(saludBase).append(", Maná: ").append(manaBase).append("]");
+        sb.append("[Salud: ").append(saludBase).append(", Maná: ").append(manaBase).append(" Power Ranger]");
         return sb.toString();
     }
 }

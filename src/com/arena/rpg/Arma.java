@@ -1,16 +1,11 @@
 package com.arena.rpg;
 
-/**
- * Clase que representa un Arma dentro del sistema Arena RPG.
- * Participa en una Asociación Unidireccional (0..1) con la clase Personaje:
- * El Personaje conoce su arma equipada, pero el Arma desconoce a su portador.
- */
 public class Arma {
     private String nombre;
     private int danioBase;
 
     public Arma(String nombre, int danioBase) {
-        this.nombre = (nombre == null || nombre.trim().isEmpty()) ? "Arma Genérica" : nombre.trim();
+        this.nombre = (nombre == null || nombre.trim().isEmpty()) ? "Arma Genérica Power Ranger" : nombre.trim();
         this.danioBase = Math.max(0, danioBase);
     }
 
@@ -35,7 +30,7 @@ public class Arma {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(nombre).append(" (Daño Base: +").append(danioBase).append(")");
+        sb.append(nombre).append(" (Daño Base: +").append(danioBase).append(" Power Ranger)");
         return sb.toString();
     }
 }

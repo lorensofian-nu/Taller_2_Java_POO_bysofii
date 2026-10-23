@@ -14,14 +14,14 @@ public class Guerrero extends Personaje {
         if (danoMitigado < 0)
             danoMitigado = 0;
         recibirDano(danoMitigado);
-        System.out.println(nombre + " bloquea con su escudo reduciendo " + fuerzaEscudo + " de daño.");
+        System.out.println(nombre + " bloquea con su escudo reduciendo " + fuerzaEscudo + " de daño Power Ranger.");
     }
 
     @Override
     public void realizarAtaqueEspecial(Personaje objetivo) {
         int danoEspecial = ataqueBase + 15;
         System.out.println(nombre + " ejecuta un Golpe Devastador a " + objetivo.getNombre() + " causando "
-                + danoEspecial + " de daño!");
+                + danoEspecial + " de daño Power Ranger!");
         objetivo.defender(danoEspecial);
     }
 
@@ -33,7 +33,7 @@ public class Guerrero extends Personaje {
         if (modoFuria) {
             int danoFuria = (ataqueBase + 15) * 2;
             System.out.println(nombre + " entra en MODO FURIA y ataca a " + p.getNombre() + " causando " + danoFuria
-                    + " de daño!");
+                    + " de daño Power Ranger!");
             p.defender(danoFuria);
         } else {
             atacar(p);

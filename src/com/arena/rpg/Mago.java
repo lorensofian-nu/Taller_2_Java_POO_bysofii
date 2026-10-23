@@ -11,7 +11,7 @@ public class Mago extends Personaje {
     @Override
     public void defender(int danoRecibido) {
         recibirDano(danoRecibido);
-        System.out.println(nombre + " recibe " + danoRecibido + " de daño sin mitigación.");
+        System.out.println(nombre + " recibe " + danoRecibido + " de daño sin mitigación Power Ranger.");
     }
 
     @Override
@@ -20,10 +20,10 @@ public class Mago extends Personaje {
             puntosMana -= 10;
             int danoMagico = ataqueBase + 20;
             System.out.println(nombre + " lanza una Bola de Fuego a " + objetivo.getNombre()
-                    + " consumiendo 10 de Maná (" + puntosMana + " restantes) causando " + danoMagico + " de daño!");
+                    + " consumiendo 10 de Maná (" + puntosMana + " restantes) causando " + danoMagico + " de daño Power Ranger!");
             objetivo.defender(danoMagico);
         } else {
-            System.out.println(nombre + " no tiene suficiente maná para un ataque especial.");
+            System.out.println(nombre + " no tiene suficiente maná para un ataque especial Power Ranger.");
         }
     }
 
