@@ -9,17 +9,23 @@ Este proyecto contiene implementaciones prácticas de conceptos de Programación
 ## Estructura del Proyecto
 
 ```
-src/com/taller/poo/
-├── Vehiculo.java              # Clase de dominio: Vehiculo con atributos y constructores
-├── Estudiante.java            # Clase de dominio: Estudiante con reporte academico
-├── CuentaBancaria.java        # Clase de dominio: Cuenta bancaria con deposito/retiro
-├── ConversorMoneda.java       # Utilidad estática para conversion de moneda
-├── Principal.java             # Clase principal con demo de todas las clases
-├── SistemaGestionCuentas.java # Aplicación interactiva de gestion de cuentas
-├── Case1.java                 # Caso de estudio: Variable no inicializada
-├── Case2.java                 # Caso de estudio: Metodo no estatico desde contexto estatico
-├── Case3.java                 # Caso de estudio: Constructor mal declarado
-└── Case4.java                 # Caso de estudio: Sombreado de variables
+src/
+├── com/arena/rpg/             # Arena RPG (Unidad 2.5: Relaciones POO y combate)
+│   ├── Arma.java              # Asociación Unidireccional (0..1) con Personaje
+│   ├── CorazonRPG.java        # Composición Fuerte (1..1) con Personaje
+│   ├── Personaje.java         # Entidad central integradora de relaciones POO
+│   ├── Gremio.java            # Asociación Bidireccional (0..* a 1) sincronizada
+│   ├── Escuadron.java         # Agregación Débil (0..*) de personajes
+│   ├── AplicacionArenaRPG.java# Menú interactivo en consola con printf y StringBuilder
+│   ├── PruebaRelacionesRPG.java# Suite de pruebas unitarias y validación en memoria
+│   ├── Guerrero.java          # Subclase táctica de combate
+│   ├── Mago.java              # Subclase táctica de combate
+│   ├── ICombatiente.java      # Interfaz de combate
+│   ├── Inventario.java        # Inventario genérico
+│   ├── Pocion.java            # Ítem consumible
+│   └── ArenaRPGMain.java      # Simulador de batalla en tablero 5x5
+├── com/taller/poo/            # Taller 1: Conceptos iniciales y casos de estudio
+└── co/edu/puj/rpg/            # Simulador de batalla inicial Javeriana
 ```
 
 ## Clases de Dominio
@@ -66,6 +72,33 @@ Archivos Case1-4 contienen ejemplos de errores comunes en Java POO con sus expli
 - **Case3.java**: Error en declaracion de constructor
 - **Case4.java**: Problema de sombreado de variables
 
+## Unidad 2.5: Relaciones entre Clases en Java (Arena RPG)
+
+Implementación del taller práctico enfocado en modelado UML y relaciones en Java:
+
+1. **Asociación Unidireccional (`Personaje -> Arma`, 0..1)**:
+   - `Personaje` almacena un atributo `armaEquipada`. Si es `null`, combate desarmado.
+   - Métodos: `equiparArma(Arma)`, `desequiparArma()`, `calcularAtaqueTotal()`.
+   - Protección con validación de nulos previa para evitar `NullPointerException`.
+
+2. **Asociación Bidireccional (`Personaje <-> Gremio`, 0..* a 1)**:
+   - Sincronización cruzada en doble vía manteniendo consistencia en memoria sin recursión infinita.
+   - Desvinculación automática de gremio anterior al cambiarse.
+   - Prevención de `StackOverflowError` en `toString()` imprimiendo únicamente identificadores simples de miembros.
+
+3. **Agregación Débil (`Escuadron -> Personaje`, 0..*)**:
+   - `Escuadron` agrupa personajes con ciclo de vida independiente.
+   - La expulsión o disolución del escuadrón no altera el estado de los personajes en la memoria Heap.
+
+4. **Composición Fuerte (`Personaje -> CorazonRPG`, 1..1)**:
+   - `CorazonRPG` se instancia internamente dentro del constructor de `Personaje`.
+   - No existen setters públicos para reemplazar la instancia, protegiendo el encapsulamiento y el ciclo de vida dependiente.
+
+5. **Aplicación de Consola (`AplicacionArenaRPG`)**:
+   - Menú interactivo con ciclo `do-while` y `switch`.
+   - Formateo de reportes y tablas tabulares con `System.out.printf`.
+   - Concatenación eficiente de cadenas mediante `StringBuilder`.
+
 ## Requisitos
 
 - Java 8 o superior
@@ -74,13 +107,22 @@ Archivos Case1-4 contienen ejemplos de errores comunes en Java POO con sus expli
 ## Compilación y Ejecución
 
 ```bash
-# Compilar todas las clases
+# Compilar clases de Arena RPG (Unidad 2.5: Relaciones entre Clases)
+javac -cp src src/com/arena/rpg/*.java
+
+# Ejecutar la aplicación interactiva de la Arena RPG
+java -cp src com.arena.rpg.AplicacionArenaRPG
+
+# Ejecutar las pruebas unitarias y de memoria
+java -ea -cp src com.arena.rpg.PruebaRelacionesRPG
+
+# Compilar clases del Taller 1
 javac src/com/taller/poo/*.java
 
-# Ejecutar Principal
+# Ejecutar Principal del Taller 1
 java -cp src com.taller.poo.Principal
 
-# Ejecutar SistemaGestionCuentas
+# Ejecutar SistemaGestionCuentas del Taller 1
 java -cp src com.taller.poo.SistemaGestionCuentas
 ```
 
