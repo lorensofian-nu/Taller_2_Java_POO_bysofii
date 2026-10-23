@@ -10,12 +10,11 @@ public class ArenaRPGMain {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        
         inicializarTablero();
 
         List<Personaje> heroes = new ArrayList<>();
-        Guerrero guerrero = new Guerrero("Thorin", 120, 15, 0, 0, 10);
-        Mago mago = new Mago("Gandalf", 80, 25, 1, 1, 50);
+        Guerrero guerrero = new Guerrero("Thorin Power Ranger", 120, 15, 0, 0, 10);
+        Mago mago = new Mago("Gandalf Power Ranger", 80, 25, 1, 1, 50);
 
         heroes.add(guerrero);
         heroes.add(mago);
@@ -31,12 +30,10 @@ public class ArenaRPGMain {
         inventarioPociones.agregar(new Pocion("Poción de Vida Menor", 30));
         inventarioPociones.agregar(new Pocion("Poción de Vida Mayor", 50));
 
-    
         actualizarTablero(heroes, enemigos);
 
-        System.out.println("=== ¡BIENVENIDO A ARENA By Sofii! ===");
+        System.out.println("=== ¡BIENVENIDO A ARENA By Sofii POWER RANGER! ===");
 
-        
         boolean victoria = false;
         boolean derrota = false;
 
@@ -45,15 +42,14 @@ public class ArenaRPGMain {
             mostrarTablero();
             mostrarEstado(heroes, enemigos);
 
-         
             for (Personaje heroe : new ArrayList<>(heroes)) {
                 if (!heroe.estaVivo()) continue;
 
-                System.out.println("\nTurno de: " + heroe.getNombre());
-                System.out.println("1. Atacar");
-                System.out.println("2. Usar Inventario");
-                System.out.println("3. Mover en Tablero");
-                System.out.print("Seleccione opción: ");
+                System.out.println("\nTurno de: " + heroe.getNombre() + " Power Ranger");
+                System.out.println("1. Atacar Power Ranger");
+                System.out.println("2. Usar Inventario Power Ranger");
+                System.out.println("3. Mover en Tablero Power Ranger");
+                System.out.print("Seleccione opción Power Ranger: ");
                 
                 int opcion = scanner.nextInt();
 
@@ -62,7 +58,7 @@ public class ArenaRPGMain {
                         if (!enemigos.isEmpty()) {
                             System.out.println("Seleccione enemigo a atacar Power Ranger:");
                             for (int i = 0; i < enemigos.size(); i++) {
-                                System.out.println(i + ". " + enemigos.get(i).getNombre() + " (Vida: " + enemigos.get(i).getVida() + ")");
+                                System.out.println(i + ". " + enemigos.get(i).getNombre() + " (Vida: " + enemigos.get(i).getVida() + " Power Ranger)");
                             }
                             int targetIdx = scanner.nextInt();
                             if (targetIdx >= 0 && targetIdx < enemigos.size()) {
@@ -77,8 +73,8 @@ public class ArenaRPGMain {
                     case 2:
                         if (!inventarioPociones.estaVacio()) {
                             Pocion p = inventarioPociones.remover(0);
-                            System.out.println(heroe.getNombre() + " usa " + p.getNombre() + " y recupera " + p.getCuracion() + " de vida!");
-                            heroe.recibirDano(-p.getCuracion()); // Curación
+                            System.out.println(heroe.getNombre() + " usa " + p.getNombre() + " y recupera " + p.getCuracion() + " de vida Power Ranger!");
+                            heroe.recibirDano(-p.getCuracion());
                         } else {
                             System.out.println("El inventario está vacío Power Ranger.");
                         }
@@ -100,7 +96,7 @@ public class ArenaRPGMain {
                 }
             }
 
-            System.out.println("\n--- TURNO ENEMIGO ---");
+            System.out.println("\n--- TURNO ENEMIGO POWER RANGER ---");
             for (Personaje enemigo : enemigos) {
                 if (enemigo.estaVivo() && !heroes.isEmpty()) {
                     Personaje heroeObjetivo = heroes.get(0);
@@ -108,11 +104,9 @@ public class ArenaRPGMain {
                 }
             }
 
-            
             heroes.removeIf(p -> !p.estaVivo());
             enemigos.removeIf(p -> !p.estaVivo());
 
-            
             boolean enCofre = false;
             for (Personaje h : heroes) {
                 if (h.getPosicionX() == 2 && h.getPosicionY() == 2) {
@@ -174,13 +168,13 @@ public class ArenaRPGMain {
     }
 
     private static void mostrarEstado(List<Personaje> heroes, List<Personaje> enemigos) {
-        System.out.println("\n--- ESTADO HÉROES ---");
+        System.out.println("\n--- ESTADO HÉROES POWER RANGER ---");
         for (Personaje h : heroes) {
-            System.out.println(h.getNombre() + " | Vida: " + h.getVida() + " | Pos: (" + h.getPosicionX() + "," + h.getPosicionY() + ")");
+            System.out.println(h.getNombre() + " | Vida: " + h.getVida() + " | Pos: (" + h.getPosicionX() + "," + h.getPosicionY() + ") Power Ranger");
         }
-        System.out.println("--- ESTADO ENEMIGOS ---");
+        System.out.println("--- ESTADO ENEMIGOS POWER RANGER ---");
         for (Personaje e : enemigos) {
-            System.out.println(e.getNombre() + " | Vida: " + e.getVida() + " | Pos: (" + e.getPosicionX() + "," + e.getPosicionY() + ")");
+            System.out.println(e.getNombre() + " | Vida: " + e.getVida() + " | Pos: (" + e.getPosicionX() + "," + e.getPosicionY() + ") Power Ranger");
         }
     }
 }
